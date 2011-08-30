@@ -1,6 +1,6 @@
 GIT
-  remote: git://github.com/cschiewek/devise_ldap_authenticatable.git
-  revision: 56816eb32b589308012fab9b39e710d887d06558
+  remote: git://github.com/jksilliman/devise_ldap_authenticatable.git
+  revision: 7a8cff796fec1eb3a73c573c14d5044cd875fc6c
   specs:
     devise_ldap_authenticatable (0.4.9)
       devise (~> 1.4.0)
@@ -8,10 +8,10 @@ GIT
 
 GIT
   remote: git://github.com/plataformatec/devise.git
-  revision: 7b1418be3b33ac77cb185c15e641292767112f08
+  revision: ef4eb47d5016b710a628187e4765ac4606ed69ae
   branch: master
   specs:
-    devise (1.4.2)
+    devise (1.4.3)
       bcrypt-ruby (~> 3.0)
       orm_adapter (~> 0.0.3)
       warden (~> 1.0.3)
@@ -64,6 +64,12 @@ GEM
     erubis (2.7.0)
     execjs (1.2.4)
       multi_json (~> 1.0)
+    haml (3.1.2)
+    haml-rails (0.3.4)
+      actionpack (~> 3.0)
+      activesupport (~> 3.0)
+      haml (~> 3.0)
+      railties (~> 3.0)
     hike (1.2.1)
     i18n (0.6.0)
     jquery-rails (1.0.13)
@@ -104,11 +110,15 @@ GEM
       thor (~> 0.14.6)
     rake (0.9.2)
     rdoc (3.9.4)
+    responders (0.6.4)
     sass (3.1.7)
     sass-rails (3.1.0.rc.7)
       actionpack (~> 3.1.0.rc6)
       railties (~> 3.1.0.rc6)
       sass (>= 3.1.4)
+    simple_form (1.4.2)
+      actionpack (~> 3.0)
+      activemodel (~> 3.0)
     sprockets (2.0.0)
       hike (~> 1.2)
       rack (~> 1.0)
@@ -137,9 +147,13 @@ DEPENDENCIES
   coffee-rails (~> 3.1.0.rc)
   devise!
   devise_ldap_authenticatable!
+  haml
+  haml-rails
   jquery-rails
   rails (= 3.1.0.rc8)
+  responders
   sass-rails (~> 3.1.0.rc)
+  simple_form
   sqlite3
   turn
   uglifier

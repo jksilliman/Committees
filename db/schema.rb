@@ -11,7 +11,26 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110829203128) do
+ActiveRecord::Schema.define(:version => 20110830180657) do
+
+  create_table "committees", :force => true do |t|
+    t.string   "name"
+    t.text     "info"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "nominations", :force => true do |t|
+    t.integer  "committee_id", :null => false
+    t.integer  "nominator_id", :null => false
+    t.integer  "nominee_id",   :null => false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "nominations", ["committee_id"], :name => "index_nominations_on_committee_id"
+  add_index "nominations", ["nominator_id"], :name => "index_nominations_on_nominator_id"
+  add_index "nominations", ["nominee_id"], :name => "index_nominations_on_nominee_id"
 
   create_table "users", :force => true do |t|
     t.string   "remember_token"

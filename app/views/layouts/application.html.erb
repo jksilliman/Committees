@@ -2,8 +2,8 @@
 <html>
 <head>
   <title>Committees</title>
-  <%= stylesheet_link_tag    "application" %>
-  <%= javascript_include_tag "application" %>
+  <%#= stylesheet_link_tag    "application" %>
+  <%#= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
 </head>
 <body>
@@ -12,7 +12,13 @@
       <p class="<%= type %>"><%= text %></p>
     <% end %>
   </div>
-<%= yield %>
-
+  <div class="nav">
+    <ul class="committees">
+      <% Committee.all.each do |committee| %>
+        <li><%= link_to committee.name, committee %></li>
+      <% end %>
+    </ul>
+  </div>
+  <%= yield %>
 </body>
 </html>

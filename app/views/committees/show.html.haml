@@ -1,0 +1,5 @@
+%h1= @committee.name 
+%p= @committee.info
+
+= link_to "Nominate for Committee", new_nomination_path(:committee_id => @committee.id) 
+

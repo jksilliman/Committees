@@ -1,0 +1,10 @@
+%h1 
+  Nominate for 
+  = @committee.name
+
+%p
+  = simple_form_for(@nomination) do |f|
+    = f.input :username, :as => "string"
+    = f.full_error :nominee
+    = f.input :committee_id, :as => "hidden"
+    = f.submit 'Submit Nomination'
