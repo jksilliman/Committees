@@ -3,12 +3,11 @@ source 'http://rubygems.org'
 gem 'rails', '3.1.0.rc8'
 
 gem 'devise', :git => 'git://github.com/plataformatec/devise.git', :branch => 'master'
-gem 'responders'
-gem 'uglifier'
-gem 'haml'
-gem 'haml-rails'
-gem 'jquery-rails'
+gem "devise_ldap_authenticatable", :git => "git://github.com/cschiewek/devise_ldap_authenticatable.git"
+
 gem 'sqlite3'
+gem 'jquery-rails'
+gem 'cancan'
 
 # Gems used only for assets and not required
 # in production environments by default.
