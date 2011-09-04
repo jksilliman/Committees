@@ -29,5 +29,5 @@ Committees::Application.configure do
   config.assets.allow_debugging = true
 
   # Expands the lines which load the assets
-  config.assets.debug = true
+  config.assets.debug = false 
 end
