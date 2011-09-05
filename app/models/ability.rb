@@ -4,6 +4,10 @@ class Ability
   def initialize(user)
     if user
       can :create, Nomination
+      if user.is_admin
+        can :manage, :all
+        cannot :destroy, User, :id => user.id
+      end
     end
     
     # Define abilities for the passed in user here. For example:

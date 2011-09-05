@@ -1,0 +1,19 @@
+%h1= @committee.name
+
+%h2 Nominations
+%table
+  %thead
+    %tr
+      %td Nominee
+      %td Nominated By
+      %td Personal Statement?
+
+  - if @committee.nominations.empty?
+    %tr
+      %td(colspan="3") The are no nominations for this committee.
+  - else
+    - @committee.nominees.each do |nominee|
+      %tr
+        %td= nominee.name
+        %td= @committee.nominations.find_all_by_nominee_id(nominee.id).map(&:nominator).map(&:name).join(", ")
+        %td TODO

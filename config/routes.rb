@@ -1,4 +1,15 @@
 Committees::Application.routes.draw do
+
+  get "nominations/index"
+
+  get "nominations/show"
+
+  get "nominations/edit"
+
+  get "nominations/update"
+
+  get "nominations/destroy"
+
   resources :committees, :only => [:show]
   resources :nominations, :only => [:new, :create]
   
@@ -34,11 +45,14 @@ Committees::Application.routes.draw do
   #     end
   #   end
 
-  #   namespace :admin do
-  #     # Directs /admin/products/* to Admin::ProductsController
-  #     # (app/controllers/admin/products_controller.rb)
-  #     resources :products
-  #   end
+  namespace :admin do
+    resources :users, :only => [:index, :new, :create, :destroy]
+    resources :committees
+    resources :nominations, :only => [:index, :show, :edit, :update, :destroy]
+    root :to => 'committees#index'
+  end
+
+
 
   root :to => 'main#index'
 

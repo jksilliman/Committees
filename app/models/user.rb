@@ -5,6 +5,8 @@ class User < ActiveRecord::Base
   devise :ldap_authenticatable, :rememberable
   # Setup accessible (or protected) attributes for your model
   attr_accessible :username, :password 
+  attr_accessible :username, :is_admin, :as => :admin
+
 
   validate :is_in_ldap
   def is_in_ldap
@@ -18,8 +20,16 @@ class User < ActiveRecord::Base
     self.email = unwrap(Devise::LdapAdapter.get_ldap_param(self.username,"mail"))
   end
 
+  # TODO - Give user's ability to enter name.
+  def name
+    self.username
+  end
+
+
   private
   def unwrap(arr)
     (arr.kind_of?(Array)) ? arr.first : arr
   end
+
+
 end
