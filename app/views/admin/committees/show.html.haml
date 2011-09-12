@@ -1,19 +1,19 @@
-%h1= @committee.name
+- title @committee.name
 
 %h2 Nominations
 %table
   %thead
     %tr
-      %td Nominee
-      %td Nominated By
-      %td Personal Statement?
+      %th Nominee
+      %th Nominated By
+      %th Application Submitted?
 
-  - if @committee.nominations.empty?
+  - if @committee.nominees_and_applicants.empty?
     %tr
       %td(colspan="3") The are no nominations for this committee.
   - else
-    - @committee.nominees.each do |nominee|
+    - @committee.nominees_and_applicants.each do |nominee|
       %tr
-        %td= nominee.name
-        %td= @committee.nominations.find_all_by_nominee_id(nominee.id).map(&:nominator).map(&:name).join(", ")
-        %td TODO
+        %td= link_to nominee.name, admin_nominations_path(:nominee_id => nominee.id, :committee_id => @committee.id)
+        %td= @committee.nominators_for(nominee)
+        %td= (@committee.application_for(nominee)) ? "YES" : "NO" 

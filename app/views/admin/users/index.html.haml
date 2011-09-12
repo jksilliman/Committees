@@ -1,14 +1,16 @@
 %h1 Manage Admins
 
 = simple_form_for([:admin, @user]) do |f|
-  = f.input :username
-  = f.submit "Make Admin" 
+  %fieldset
+    %legend Create Admin User
+    = f.input :username
+    = f.submit "Create", :class => "btn primary" 
 
 %table#users
   %thead
     %tr
-      %td CNetID
-      %td Action
+      %th CNetID
+      %th Action
   %tbody
   - @users.each do |user|
     %tr.user{"data-user" => user.id}

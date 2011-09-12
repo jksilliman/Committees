@@ -11,7 +11,18 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110830180657) do
+ActiveRecord::Schema.define(:version => 20110911063031) do
+
+  create_table "applications", :force => true do |t|
+    t.integer  "applicant_id"
+    t.integer  "committee_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.text     "form_data"
+  end
+
+  add_index "applications", ["applicant_id"], :name => "index_applications_on_applicant_id"
+  add_index "applications", ["committee_id"], :name => "index_applications_on_committee_id"
 
   create_table "committees", :force => true do |t|
     t.string   "name"
@@ -26,11 +37,21 @@ ActiveRecord::Schema.define(:version => 20110830180657) do
     t.integer  "nominee_id",   :null => false
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.text     "form_data"
   end
 
   add_index "nominations", ["committee_id"], :name => "index_nominations_on_committee_id"
   add_index "nominations", ["nominator_id"], :name => "index_nominations_on_nominator_id"
   add_index "nominations", ["nominee_id"], :name => "index_nominations_on_nominee_id"
+
+  create_table "questions", :force => true do |t|
+    t.string   "type"
+    t.text     "text"
+    t.boolean  "for_nominator"
+    t.boolean  "for_applicant"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "users", :force => true do |t|
     t.string   "remember_token"
@@ -43,6 +64,7 @@ ActiveRecord::Schema.define(:version => 20110830180657) do
     t.boolean  "is_readonly",         :default => true,  :null => false
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "phone_number"
   end
 
   add_index "users", ["username"], :name => "index_users_on_username", :unique => true

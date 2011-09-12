@@ -1,16 +1,16 @@
-%h1 Manage Committees 
-= link_to "Create Committee", new_admin_committee_path
-%table.committees
+- title "Manage Committees" 
+= link_to "Create Committee", new_admin_committee_path, :class => "btn primary"
+%table.committees.zebra-striped
   %thead
     %tr
-      %td Name
-      %td # of Nominees
-      %td Action
+      %th Name
+      %th # of Nominees
+      %th Action
   %tbody
     - @committees.each do |committee|
       %tr
         %td= link_to committee.name, admin_committee_path(committee)
-        %td TODO
+        %td= committee.nominees_and_applicants.count 
         %td
           = link_to "View", admin_committee_path(committee)
           = link_to "Edit", edit_admin_committee_path(committee)

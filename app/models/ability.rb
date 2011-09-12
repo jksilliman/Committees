@@ -4,6 +4,7 @@ class Ability
   def initialize(user)
     if user
       can :create, Nomination
+      can :create, Application
       if user.is_admin
         can :manage, :all
         cannot :destroy, User, :id => user.id

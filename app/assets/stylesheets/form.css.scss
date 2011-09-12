@@ -1,0 +1,13 @@
+.inputError {
+  padding-left: 10px;
+}
+.actions {
+  height: 30px;
+  .btn {
+    float: right;
+  }
+}
+
+input.long, textarea {
+  width: 500px;
+}

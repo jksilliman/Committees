@@ -1,0 +1,5 @@
+You've been nominated to be on the <%= @committee.name %>. 
+
+Read about this committee at <%= committee_url(@committee) %>
+
+Submit your application at <%= new_application_url(:committee_id => @committee.id) %>

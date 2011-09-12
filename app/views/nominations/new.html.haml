@@ -1,10 +1,15 @@
-%h1 
-  Nominate for 
-  = @committee.name
+- title "Nominate for #{@committee.name}"
 
 %p
   = simple_form_for(@nomination) do |f|
-    = f.input :username, :as => "string"
-    = f.full_error :nominee
     = f.input :committee_id, :as => "hidden"
-    = f.submit 'Submit Nomination'
+    %fieldset
+      %legend Nominee's Info
+      = f.simple_fields_for :nominee, (@nomination.nominee || @nomination.build_nominee) do |u|
+        = u.input :username, :as => "string", :hint => "You don't have to give us their name or contact info, we'll leave that up to them."
+
+    %fieldset
+      %legend The Tough Questions
+      = render 'shared/questions', :f => f, :questions => @nomination.questions
+    .actions
+      = f.submit 'Submit Nomination', :class => "btn primary"

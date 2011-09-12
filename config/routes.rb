@@ -1,18 +1,7 @@
 Committees::Application.routes.draw do
-
-  get "nominations/index"
-
-  get "nominations/show"
-
-  get "nominations/edit"
-
-  get "nominations/update"
-
-  get "nominations/destroy"
-
   resources :committees, :only => [:show]
   resources :nominations, :only => [:new, :create]
-  
+  resources :applications, :only => [:new, :create] 
   
   devise_for :users
 
@@ -48,8 +37,9 @@ Committees::Application.routes.draw do
   namespace :admin do
     resources :users, :only => [:index, :new, :create, :destroy]
     resources :committees
+    resources :questions, :only => [:index, :new, :create, :destroy]
     resources :nominations, :only => [:index, :show, :edit, :update, :destroy]
-    root :to => 'committees#index'
+    root :to => 'committees#index', :as => ""
   end
 
 

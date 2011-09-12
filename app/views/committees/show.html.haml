@@ -1,5 +1,6 @@
-%h1= @committee.name 
+- title @committee.name 
 %p= @committee.info
 
-= link_to "Nominate for Committee", new_nomination_path(:committee_id => @committee.id) 
+= link_to "Nominate for Committee", new_nomination_path(:committee_id => @committee.id), :class => "btn large primary" 
 
+= link_to "Apply to Committee", new_application_path(:committee_id => @committee.id), :class => "btn large primary"

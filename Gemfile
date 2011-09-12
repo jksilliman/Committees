@@ -10,8 +10,9 @@ gem 'jquery-rails'
 gem 'cancan'
 gem 'haml'
 gem 'haml-rails'
-gem 'simple_form'
+gem 'simple_form', :git => 'git://github.com/plataformatec/simple_form.git', :branch => 'wrappers'
 gem 'responders'
+
 
 # Gems used only for assets and not required
 # in production environments by default.
@@ -27,6 +28,7 @@ end
 
 group :development do
   gem 'annotate'
+  
 end
 
 group :test do

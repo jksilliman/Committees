@@ -1,4 +1,4 @@
-class Admin::CommitteesController < ApplicationController
+class Admin::CommitteesController < Admin::BaseController  
   load_and_authorize_resource
   def index
     respond_with(@committee)
@@ -31,8 +31,5 @@ class Admin::CommitteesController < ApplicationController
     respond_with(@committee)
   end
 
-  protected
-  def respond_with(*args, &block)
-    super(:admin, *args, &block)
-  end
+
 end

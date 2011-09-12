@@ -1,4 +1,9 @@
 class Nomination < ActiveRecord::Base
+  include Questionable
+  has_questions_for "nominator"
+  
+  
+  
   belongs_to :committee
   belongs_to :nominee, :class_name => "User"
   belongs_to :nominator, :class_name => "User"
@@ -12,7 +17,8 @@ class Nomination < ActiveRecord::Base
   validate :cannot_nominate_self
   def cannot_nominate_self
     if nominee == nominator
-      errors.add(:nominee, "You cannot nominate yourself")
+      self.errors.add(:nominee, " is invalid")
+      self.nominee.errors.add(:username, " cannot nominate yourself")
     end
   end
 
@@ -21,18 +27,14 @@ class Nomination < ActiveRecord::Base
     nom = Nomination.find(:first, :conditions => {:committee_id => committee_id, :nominator_id => nominator_id, :nominee_id => nominee_id})
 
     if nom
-      errors.add(:nominee, "You cannot renominate someone for a committee.")
+      self.errors.add(:nominee, " is invalid")
+      self.nominee.errors.add(:username, " cannot renominate someone for a committee.")
     end
   end  
 
   # Allow nomination of (formerly) unregistered users
-  attr_accessible :username
-  attr_accessor :username
-  before_validation :load_nominee
-  
-  def load_nominee
-    puts self.username
-    self.nominee = User.find_or_create_by_username(self.username)
+  attr_accessible :nominee_attributes
+  def nominee_attributes=(attr)
+    self.nominee = User.find_or_initialize_by_username(attr["username"])
   end
-
 end

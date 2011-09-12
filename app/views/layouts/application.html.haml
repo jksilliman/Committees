@@ -1,25 +1,38 @@
 !!! 5
 %html
   %head
-    %title Committees
+    %title= "#{title} | UChicago SG Committees" 
     = stylesheet_link_tag "application"
     = javascript_include_tag "application"
     = csrf_meta_tags
   %body
-    .header
-      - if current_user
-        = "Logged in as #{current_user.username} | "
-        = link_to "Logout", destroy_user_session_path, :method => "delete"
-      - else
-        = link_to "Login", new_user_session_path
+    .page-header
+      .user-panel
+        - if current_user
+          = "Welcome, #{current_user.username}"
+          - if current_user.is_admin
+            = link_to "Admin Panel", admin_path
+            = " | "
+          = link_to "Logout", destroy_user_session_path, :method => "delete"
+        - else
+          = link_to "Login", new_user_session_path
 
-    .nav
-      %ul.committees
-        - Committee.all.each do |committee|
-          %li= link_to committee.name, committee
-
-    .flashes
-      - flash.each do |type, text|
-        %p(class=type)= text
-
-    = yield
+    .container-fluid
+      .sidebar
+        - if content_for?(:sidebar)
+          = yield :sidebar
+        - else
+          %h2 Committees
+          %ul.committees.unstyled
+            - Committee.all.each do |committee|
+              %li= link_to committee.name, committee
+      
+      .content
+        %h1= title
+        
+        .flashes
+          - flash.each do |type, text|
+            %div{"class" => "#{type} alert-message"}= text
+        .row
+          .span12.columns
+            = yield
