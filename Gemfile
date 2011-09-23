@@ -1,6 +1,6 @@
 source 'http://rubygems.org'
 
-gem 'rails', '3.1.0.rc8'
+gem 'rails', '3.1.0'
 
 gem 'devise', :git => 'git://github.com/plataformatec/devise.git', :branch => 'master'
 gem "devise_ldap_authenticatable", :git => "git://github.com/jksilliman/devise_ldap_authenticatable.git"
