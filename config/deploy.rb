@@ -1,5 +1,15 @@
+$:.unshift(File.expand_path('./lib', ENV['rvm_path'])) # Add RVM's lib directory to the load path.
+require "rvm/capistrano"    
+set :rvm_ruby_string, '1.9.2' # you probably have this already
+set :rvm_type, :user # this is the money config, it defaults to :system
+
+
+set :bundle_roles, :app
+require 'bundler/capistrano'
+default_run_options[:pty] = true
+
 set :application, "committees"
-set :repository,  "github.com/jksilliman/Committees.git"
+set :repository,  "git://github.com/jksilliman/Committees.git"
 set :scm, :git
 set :deploy_via, :remote_cache
 set :deploy_to, "/var/www/committees"

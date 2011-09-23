@@ -41,10 +41,10 @@ test:
   # <<: *AUTHORIZATIONS
 
 production:
-  host: localhost
+  host: ldap.uchicago.edu
   port: 636
-  attribute: cn
-  base: ou=people,dc=test,dc=com
+  attribute: uid 
+  base: ou=people,dc=uchicago,dc=edu
   # admin_user: cn=admin,dc=test,dc=com
   # admin_password: admin_password
   ssl: true
