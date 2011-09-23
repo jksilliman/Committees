@@ -12,7 +12,7 @@ gem 'haml'
 gem 'haml-rails'
 gem 'simple_form', :git => 'git://github.com/plataformatec/simple_form.git', :branch => 'wrappers'
 gem 'responders'
-
+gem "therubyracer", :require => 'v8'
 
 # Gems used only for assets and not required
 # in production environments by default.
