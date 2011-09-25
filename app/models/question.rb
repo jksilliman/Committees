@@ -8,7 +8,7 @@ class Question < ActiveRecord::Base
 
 
   # If we're designing a model question, it doesn't need an answer.
-  validates :answer, :presence => true, :unless => Proc.new { |q| q.for_applicant || q.for_nominator }
+  validates :answer, :presence => true, :unless => Proc.new { |q| q.new_record? }
 
   def to_hash
     {question: text, answer: answer}

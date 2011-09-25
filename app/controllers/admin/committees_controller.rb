@@ -10,7 +10,7 @@ class Admin::CommitteesController < Admin::BaseController
 
   def create
     @committee.save
-    respond_with(@committee)
+    respond_with(@committee, :location => admin_committees_path)
   end
 
   def edit
@@ -19,7 +19,7 @@ class Admin::CommitteesController < Admin::BaseController
 
   def update
     @committee.save
-    respond_with(@committee)
+    respond_with(@committee, :location => admin_committees_path)
   end
 
   def destroy
