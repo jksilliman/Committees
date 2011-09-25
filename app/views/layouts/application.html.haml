@@ -18,6 +18,8 @@
           = link_to "Login", new_user_session_path
 
     .container-fluid
+      %h1 University of Chicago
+
       .sidebar
         - if content_for?(:sidebar)
           = yield :sidebar
@@ -28,12 +30,11 @@
               %li= link_to committee.name, committee
       
       .content
-        %h2 University of Chicago
         %h1= title
         
         .flashes
           - flash.each do |type, text|
             %div{"class" => "#{type} alert-message"}= text
         .row
-          .span10.columns
+          .span8.columns
             = yield
