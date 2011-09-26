@@ -18,7 +18,7 @@
           = link_to "Login", new_user_session_path
 
     .container-fluid
-      %h1 University of Chicago
+      %h1= link_to "University of Chicago", root_path
 
       .sidebar
         - if content_for?(:sidebar)

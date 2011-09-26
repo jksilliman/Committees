@@ -9,7 +9,7 @@ class Admin::CommitteesController < Admin::BaseController
   end
 
   def create
-    @committee.save
+    @committee = Committee.create(params[:committee])
     respond_with(@committee, :location => admin_committees_path)
   end
 
@@ -18,7 +18,7 @@ class Admin::CommitteesController < Admin::BaseController
   end
 
   def update
-    @committee.save
+    @committee.update_attributes(params[:committee])
     respond_with(@committee, :location => admin_committees_path)
   end
 

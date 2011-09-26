@@ -1,5 +1,5 @@
 class Committee < ActiveRecord::Base
-  attr_accessible :name, :info
+  attr_accessible :name, :info, :contact_info, :website
   has_many :nominations
   has_many :nominees, :through => :nominations, :uniq => true
   has_many :applications

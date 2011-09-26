@@ -1,10 +1,11 @@
 class Question < ActiveRecord::Base
   attr_accessor :answer
-  attr_accessible :text, :answer
+  attr_accessible :text, :answer, :for_nominator, :for_applicant
 
   # HACK
   attr_accessor :nomination_id
   attr_accessor :application_id
+
 
 
   # If we're designing a model question, it doesn't need an answer.

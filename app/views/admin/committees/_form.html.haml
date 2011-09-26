@@ -1,4 +1,6 @@
 = simple_form_for([:admin, @committee]) do |f|
-  = f.input :name, :class => "long"
+  = f.input :name, :input_html => { :class => "long" }
+  = f.input :contact_info, :input_html => { :rows => 3 }
+  = f.input :website
   = f.input :info
   = f.submit

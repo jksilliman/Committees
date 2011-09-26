@@ -6,4 +6,7 @@ module ApplicationHelper
       @title 
     end
   end
+  def markdown(text)
+    text.blank? ? "" : BlueCloth.new(text).to_html.html_safe
+  end
 end

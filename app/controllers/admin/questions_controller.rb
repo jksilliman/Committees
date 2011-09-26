@@ -18,6 +18,7 @@ class Admin::QuestionsController < Admin::BaseController
   end
 
   def create
+    @question = Question.new(params[:question])
     @question.save
     respond_with(@question, :location => admin_questions_path)
   end
