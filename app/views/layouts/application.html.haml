@@ -24,10 +24,11 @@
         - if content_for?(:sidebar)
           = yield :sidebar
         - else
-          %h2 Committees
           %ul.committees.unstyled
-            - Committee.all.each do |committee|
-              %li= link_to committee.name, committee
+            - Section.all.each do |section|
+              %li= link_to section.name, committees_path(section_id: section.id)
+            - if Committee.count(:conditions => {:section_id => nil }) > 0
+              %li= link_to "Other", committees_path
       
       .content
         %h1= title

@@ -29,3 +29,12 @@ namespace :deploy do
   end
 end
 
+namespace :db do
+  task :seed do
+    run "cd #{current_path}; bundle exec rake db:seed RAILS_ENV=production"
+  end
+  task :migrate do
+    run "cd #{current_path}; bundle exec rake db:seed RAILS_ENV=production"
+  end
+end
+

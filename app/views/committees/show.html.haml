@@ -6,8 +6,8 @@
     = markdown(@committee.contact_info)
 - unless @committee.website.blank?
   %p
-    %strong Website:
-    = link_to @committee.website, @committee.website
+    %em Website:
+    %p= link_to @committee.website, @committee.website
 
 = link_to "Nominate for Committee", new_nomination_path(:committee_id => @committee.id), :class => "btn large primary" 
 

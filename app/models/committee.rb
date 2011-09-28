@@ -1,5 +1,9 @@
 class Committee < ActiveRecord::Base
-  attr_accessible :name, :info, :contact_info, :website
+  attr_accessible :name, :info, :contact_info, :website, :section_id, :section
+  
+  belongs_to :section
+  default_scope includes(:section)
+
   has_many :nominations
   has_many :nominees, :through => :nominations, :uniq => true
   has_many :applications

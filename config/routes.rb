@@ -1,5 +1,5 @@
 Committees::Application.routes.draw do
-  resources :committees, :only => [:show]
+  resources :committees, :only => [:index, :show]
   resources :nominations, :only => [:new, :create]
   resources :applications, :only => [:new, :create] 
   

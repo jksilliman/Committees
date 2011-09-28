@@ -1,6 +1,7 @@
 class Admin::CommitteesController < Admin::BaseController  
   load_and_authorize_resource
   def index
+    Committee.find(:all, :include => :section, :order => "sections.id DESC")
     respond_with(@committee)
   end
 
