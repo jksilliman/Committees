@@ -36,6 +36,7 @@ Committees::Application.routes.draw do
 
   namespace :admin do
     resources :users, :only => [:index, :new, :create, :destroy]
+    resources :sections
     resources :committees
     resources :questions, :only => [:index, :new, :create, :destroy]
     resources :nominations, :only => [:index, :show, :edit, :update, :destroy]

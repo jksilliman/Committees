@@ -1,4 +1,4 @@
-%h1= committee.name 
+%h2= committee.name 
 = link_to "Nominate for Committee", new_nomination_path(:committee_id => committee.id), :class => "btn large primary" 
 
 = link_to "Apply to Committee", new_application_path(:committee_id => committee.id), :class => "btn large primary"
