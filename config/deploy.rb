@@ -34,7 +34,7 @@ namespace :db do
     run "cd #{current_path}; bundle exec rake db:seed RAILS_ENV=production"
   end
   task :migrate do
-    run "cd #{current_path}; bundle exec rake db:seed RAILS_ENV=production"
+    run "cd #{current_path}; bundle exec rake db:migrate RAILS_ENV=production"
   end
 end
 
