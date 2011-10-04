@@ -1,7 +1,7 @@
 !!! 5
 %html
   %head
-    %title= "#{title} | UChicago SG Committees" 
+    %title= "#{title} | UChicago Committees" 
     = stylesheet_link_tag "application"
     = javascript_include_tag "application"
     = csrf_meta_tags
@@ -18,7 +18,7 @@
           = link_to "Login", new_user_session_path
 
     .container-fluid
-      %h1= link_to "University of Chicago", root_path
+      %h1= link_to (image_tag "sg.jpg"), root_path
 
       .sidebar
         - if content_for?(:sidebar)
