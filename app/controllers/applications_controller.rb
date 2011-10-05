@@ -27,7 +27,7 @@ class ApplicationsController < ApplicationController
     @committee = Committee.find(params[:committee_id] || params[:application][:committee_id])
     if @committee.application_for(current_user)
       flash[:error] = "You have already applied to be on this committee."
-      redirect_to committee_path(@committee)
+      redirect_to committees_path(:section_id => @committee.section_id)
     end
   end
 
