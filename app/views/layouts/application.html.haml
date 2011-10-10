@@ -18,8 +18,11 @@
           = link_to "Login", new_user_session_path
 
     .container-fluid
-      %h1= link_to (image_tag "sg.jpg"), root_path
-
+      .header
+        = link_to root_path do
+          = image_tag "sg.jpg", :class => 'logo'
+          %h1 UChicago Committees
+        %p Looking to join one Universities many Student Life Committees? You've come to the right place. 
       .sidebar
         - if content_for?(:sidebar)
           = yield :sidebar
