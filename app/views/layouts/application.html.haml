@@ -23,7 +23,10 @@
           = image_tag "sg.jpg", :class => 'logo'
         = link_to root_path do
           %h1 UChicago Committees
-        %p Looking to join one Universities many Student Life Committees? You've come to the right place. 
+        %p 
+          Looking to join one of the University's many Student Life Committees?
+          %br 
+          You've come to the right place!  
       .sidebar
         - if content_for?(:sidebar)
           = yield :sidebar
