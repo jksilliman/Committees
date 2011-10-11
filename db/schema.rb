@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110926051949) do
+ActiveRecord::Schema.define(:version => 20111011014200) do
 
   create_table "applications", :force => true do |t|
     t.integer  "applicant_id"
@@ -32,6 +32,7 @@ ActiveRecord::Schema.define(:version => 20110926051949) do
     t.text     "contact_info"
     t.string   "website"
     t.integer  "section_id"
+    t.boolean  "applications_open"
   end
 
   add_index "committees", ["section_id"], :name => "index_committees_on_section_id"

@@ -11,3 +11,14 @@
 input.long, textarea {
   width: 500px;
 }
+
+.nomination, .application {
+  div.input {
+    margin-left: 0px;
+  }
+  label {
+    float: none;
+  } 
+}
+
+
