@@ -1,8 +1,8 @@
 source 'http://rubygems.org'
 
-gem 'rails', '3.1.0'
+gem 'rails', '3.1.1'
 
-gem 'devise', :git => 'git://github.com/plataformatec/devise.git', :branch => 'master'
+gem 'devise', '~> 1.4.0', :git => 'git://github.com/plataformatec/devise.git', :branch => 'v1.4'
 gem "devise_ldap_authenticatable", :git => "git://github.com/jksilliman/devise_ldap_authenticatable.git"
 
 gem 'sqlite3'
@@ -20,6 +20,7 @@ gem 'bluecloth'
 # in production environments by default.
 group :assets do
   gem 'sass-rails', "  ~> 3.1.0.rc"
+  gem 'sass', "3.1.1"
   gem 'coffee-rails', "~> 3.1.0.rc"
   gem 'uglifier'
 end

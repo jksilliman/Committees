@@ -1,6 +1,8 @@
 class Question < ActiveRecord::Base
   attr_accessor :answer
-  attr_accessible :text, :answer, :for_nominator, :for_applicant
+  attr_accessible :text, :answer, :for_nominator, :for_applicant, :committee_id
+
+  belongs_to :committee
 
   # HACK
   attr_accessor :nomination_id

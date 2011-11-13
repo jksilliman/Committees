@@ -1,8 +1,7 @@
 class Application < ActiveRecord::Base
   include Questionable
-  has_questions_for "applicant" 
-
-
+  has_questions_for "applicant"
+  
 
 
   belongs_to :committee

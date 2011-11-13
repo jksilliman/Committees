@@ -16,8 +16,15 @@ module Questionable
       include InstanceMethods
 
       define_method "questions" do
-        @questions ||= Question.where("for_#{question_type}" => true).to_a
+        unless @questions
+          @questions = []
+          if self.committee.use_default_questions 
+            @questions.concat Question.where("for_#{question_type}" => true).to_a
+          end
+          @questions.concat Question.where(:committee_id => self.committee.id, "for_#{question_type}" => true).to_a
+        end
       end
+
       define_method "questions_attributes=" do |qs|
         qs.each do |id, data|
           puts "#{id} : #{data['answer']}"

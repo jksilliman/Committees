@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111011014200) do
+ActiveRecord::Schema.define(:version => 20111112210416) do
 
   create_table "applications", :force => true do |t|
     t.integer  "applicant_id"
@@ -32,7 +32,8 @@ ActiveRecord::Schema.define(:version => 20111011014200) do
     t.text     "contact_info"
     t.string   "website"
     t.integer  "section_id"
-    t.boolean  "applications_open"
+    t.boolean  "applications_open",     :default => true
+    t.boolean  "use_default_questions", :default => true
   end
 
   add_index "committees", ["section_id"], :name => "index_committees_on_section_id"
@@ -57,7 +58,10 @@ ActiveRecord::Schema.define(:version => 20111011014200) do
     t.boolean  "for_applicant"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "committee_id"
   end
+
+  add_index "questions", ["committee_id"], :name => "index_questions_on_committee_id"
 
   create_table "sections", :force => true do |t|
     t.string   "name"
