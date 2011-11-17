@@ -34,6 +34,10 @@ class ApplicationsController < ApplicationController
   def load_application
     @application = Application.new
     @application.applicant = current_user
+    
+    @application.committee_id = params[:application][:committee_id] 
+    # The assignment of questions requires the committee already to be assigned,
+    
     @application.assign_attributes(params[:application])
   end
 
