@@ -23,6 +23,7 @@ module Questionable
           end
           @questions.concat Question.where(:committee_id => self.committee.id, "for_#{question_type}" => true).to_a
         end
+        @questions
       end
 
       define_method "questions_attributes=" do |qs|
