@@ -26,6 +26,7 @@ class NominationsController < ApplicationController
   def load_nomination
     @nomination = Nomination.new
     @nomination.nominator = current_user
+    @nomination.committee_id = params[:nomination][:committee_id]
     @nomination.assign_attributes(params[:nomination])
   end
 end

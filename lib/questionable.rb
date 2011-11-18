@@ -19,7 +19,7 @@ module Questionable
         unless @questions
           @questions = []
           if self.committee.use_default_questions 
-            @questions.concat Question.where("for_#{question_type}" => true).to_a
+            @questions.concat Question.where("for_#{question_type}" => true, :committee_id => nil).to_a
           end
           @questions.concat Question.where(:committee_id => self.committee.id, "for_#{question_type}" => true).to_a
         end
