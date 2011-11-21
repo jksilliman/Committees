@@ -1,5 +1,5 @@
 class Admin::SectionsController < Admin::BaseController 
-  load_and_authorize_resource
+  load_and_authorize_resource :section
   respond_to :html
   def index
     respond_with(@sections)
@@ -23,7 +23,7 @@ class Admin::SectionsController < Admin::BaseController
   end
 
   def update
-    @section.save
+    @section.update_attributes(params[:section])
     respond_with(@section)
   end
 
