@@ -38,6 +38,7 @@ Committees::Application.routes.draw do
     resources :users, :only => [:index, :new, :create, :destroy]
     resources :sections
     resources :committees
+    resources :content, :only => [:index, :edit, :update]
     resources :questions, :only => [:index, :new, :create, :destroy]
     resources :nominations, :only => [:index, :show, :edit, :update, :destroy]
     root :to => 'committees#index', :as => ""
