@@ -13,11 +13,19 @@ class Committee < ActiveRecord::Base
     @n_and_a ||= (self.nominees + self.applicants).uniq
   end
 
+  def nominations_for(nominee)
+    self.nominations.find_all_by_nominee_id(nominee.id)
+  end
+
   def nominators_for(nominee)
-    self.nominations.find_all_by_nominee_id(nominee.id).map(&:nominator).map(&:name).join(", ")
+    self.nominations_for(nominee).map(&:nominator).map(&:name).join(", ")
   end
 
   def application_for(applicant)
     self.applicants.find_by_id(applicant.id)
+  end
+
+  def date_for(nominee)
+    (nominations_for(nominee) + [application_for(nominee)] ).map(&:updated_at).max
   end
 end

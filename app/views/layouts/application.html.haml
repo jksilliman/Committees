@@ -34,6 +34,7 @@
           = yield :sidebar
         - else
           %ul.committees.unstyled
+            %li= link_to "OPEN", committees_path(:section_type => "open")
             - Section.all.each do |section|
               %li= link_to section.name, committees_path(section_id: section.id)
             - if Committee.count(:conditions => {:section_id => nil }) > 0
