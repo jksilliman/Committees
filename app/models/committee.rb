@@ -22,10 +22,10 @@ class Committee < ActiveRecord::Base
   end
 
   def application_for(applicant)
-    self.applicants.find_by_id(applicant.id)
+    self.applications.find_by_applicant_id(applicant.id)
   end
 
   def date_for(nominee)
-    (nominations_for(nominee) + [application_for(nominee)] ).map(&:updated_at).max
+     (nominations_for(nominee) + [application_for(nominee)] ).map(&:updated_at).max
   end
 end
