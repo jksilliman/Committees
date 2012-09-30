@@ -1,8 +1,8 @@
 $:.unshift(File.expand_path('./lib', ENV['rvm_path'])) # Add RVM's lib directory to the load path.
 require "rvm/capistrano"    
-set :rvm_ruby_string, '1.9.2' # you probably have this already
-set :rvm_type, :user # this is the money config, it defaults to :system
-
+set :rvm_ruby_string, '1.9.3' # you probably have this already
+set :rvm_type, :system # this is the money config, it defaults to :system
+set :user, "delphi"
 
 set :bundle_roles, :app
 require 'bundler/capistrano'
@@ -15,8 +15,7 @@ set :deploy_via, :remote_cache
 set :deploy_to, "/var/www/committees"
 
 # Or: `accurev`, `bzr`, `cvs`, `darcs`, `git`, `mercurial`, `perforce`, `subversion` or `none`
-server "sg.uchicago.edu", :app, :web, :db, :primary => true
-set :user, "jksilliman"
+server "delphi.uchicago.edu:61527", :app, :web, :db, :primary => true
 # if you're still using the script/reaper helper you will need
 # these http://github.com/rails/irs_process_scripts
 
