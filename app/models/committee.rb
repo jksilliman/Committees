@@ -26,6 +26,6 @@ class Committee < ActiveRecord::Base
   end
 
   def date_for(nominee)
-     (nominations_for(nominee) + [application_for(nominee)] ).map(&:updated_at).max
+     (nominations_for(nominee) + [application_for(nominee)] ).compact.map(&:updated_at).max
   end
 end
