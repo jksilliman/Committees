@@ -10,7 +10,7 @@ class Committee < ActiveRecord::Base
   has_many :applicants, :through => :applications
 
   def nominees_and_applicants
-    @n_and_a ||= (self.nominees + self.applicants).uniq
+    @n_and_a ||= (self.nominees + self.applicants).uniq.sort_by { |i| c.date_for(i) }
   end
 
   def nominations_for(nominee)
